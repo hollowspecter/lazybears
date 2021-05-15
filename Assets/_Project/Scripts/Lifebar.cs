@@ -22,7 +22,7 @@ public class Lifebar : MonoBehaviour
 	public float graceAmount = 0.5f;
 
 	[Header("UnityEvents")]
-	public UnityEvent onDeath;
+	public UnityEvent onLose;
 	public UnityEvent onMiss;
 	public UnityEvent onWrongInput;
 
@@ -51,7 +51,7 @@ public class Lifebar : MonoBehaviour
 			Instance = this;
 		else
 		{
-			Debug.LogWarning("Several instances of conductors are not okay, will be deleted");
+			Debug.LogWarning("Several instances of lifebars are not okay, will be deleted");
 			Destroy(gameObject);
 		}
 
@@ -69,7 +69,7 @@ public class Lifebar : MonoBehaviour
 
 		if (currentHealth <= 0f)
 		{
-			onDeath?.Invoke();
+			OnLose();
 		}
 	}
 
@@ -90,5 +90,11 @@ public class Lifebar : MonoBehaviour
 	public void OnHitSuccess()
 	{
 		CurrentHealth = currentHealth + recoveryAmount;
+	}
+
+	private void OnLose()
+	{
+		onLose?.Invoke();
+		Conductor.Instance.StopSong();
 	}
 }

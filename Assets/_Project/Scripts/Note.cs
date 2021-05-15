@@ -91,7 +91,6 @@ public class Note : MonoBehaviour
 		// Deactivate if too long
 		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.HitPeriodInBeats)
 		{
-			Conductor.Instance.onError?.Invoke();
 			Lifebar.Instance.OnMiss();
 			gameObject.SetActive(false);
 		}

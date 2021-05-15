@@ -16,4 +16,12 @@ public class Beatmap : MonoBehaviour
 			notes[i].gameObject.SetActive(false);
 		}
 	}
+
+	public void DeactivateAllNotes()
+	{
+		for (int i = 0; i < notes.Length; ++i)
+		{
+			notes[i].gameObject.SetActive(false);
+		}
+	}
 }
