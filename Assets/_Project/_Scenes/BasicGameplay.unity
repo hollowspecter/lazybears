@@ -406,7 +406,7 @@ MonoBehaviour:
   DefaultShakeAmplitude: 0.5
   DefaultShakeFrequency: 10
   IdleAmplitude: 0.5
-  IdleFrequency: 0.5006579
+  IdleFrequency: 0.5012659
   LerpSpeed: 5
   TestDuration: 0.3
   TestAmplitude: 2
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0.5
-  m_FrequencyGain: 0.5006579
+  m_FrequencyGain: 0.5012659
   mNoiseOffsets: {x: 910.8612, y: 793.14514, z: 207.2002}
 --- !u!114 &486567317
 MonoBehaviour:
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   DefaultShakeAmplitude: 0.5
   DefaultShakeFrequency: 10
   IdleAmplitude: 0.5
-  IdleFrequency: 0.5006577
+  IdleFrequency: 0.5012658
   LerpSpeed: 5
   TestDuration: 0.3
   TestAmplitude: 2
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   DefaultShakeAmplitude: 0.5
   DefaultShakeFrequency: 10
   IdleAmplitude: 0.5
-  IdleFrequency: 0.5006577
+  IdleFrequency: 0.5012658
   LerpSpeed: 5
   TestDuration: 0.3
   TestAmplitude: 2
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0.5
-  m_FrequencyGain: 0.5006577
+  m_FrequencyGain: 0.5012658
   mNoiseOffsets: {x: -848.67834, y: 824.4917, z: -31.191498}
 --- !u!114 &1706728108
 MonoBehaviour:
@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0.5
-  m_FrequencyGain: 0.5006577
+  m_FrequencyGain: 0.5012658
   mNoiseOffsets: {x: -448.3296, y: 743.8252, z: -440.49777}
 --- !u!114 &1923360124
 MonoBehaviour:
@@ -3056,6 +3056,10 @@ PrefabInstance:
       propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6722916929753719526}
+    - target: {fileID: 5029821759280014682, guid: 0394e499eeeaa2a41a8fab59c5f61385, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 5029821759407528040, guid: 0394e499eeeaa2a41a8fab59c5f61385, type: 3}
       propertyPath: m_RootOrder
       value: 1
