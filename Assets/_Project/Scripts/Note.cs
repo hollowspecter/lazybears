@@ -7,6 +7,9 @@ using MoreMountains.Feedbacks;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
 {
+	public delegate void CultistDelegate(string triggerName);
+	public static CultistDelegate CultistAction;
+
 	public enum Direction
 	{
 		Up, Down, Left, Right
@@ -72,6 +75,7 @@ public class Note : MonoBehaviour
 		{
 			if (t >= 1f - Mathf.Epsilon)
 			{
+				TriggerCultistAction();
 				gameObject.SetActive(false);
 			}
 			return;
@@ -106,6 +110,25 @@ public class Note : MonoBehaviour
 		if (length > 0f)
 		{
 			Gizmos.DrawLine(transform.position, transform.position + Vector3.down * length);
+		}
+	}
+
+	private void TriggerCultistAction()
+	{
+		switch (direction)
+		{
+			case Direction.Up:
+				CultistAction?.Invoke("Up");
+				break;
+			case Direction.Down:
+				CultistAction?.Invoke("Down");
+				break;
+			case Direction.Left:
+				CultistAction?.Invoke("Left");
+				break;
+			case Direction.Right:
+				CultistAction?.Invoke("Right");
+				break;
 		}
 	}
 }
