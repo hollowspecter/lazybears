@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PolyAdventureMaterial_01
-  m_Shader: {fileID: 4800000, guid: bcda9a4af3b5d8246a2910cff3e5af44, type: 3}
-  m_ShaderKeywords: _EMISSION _SEGMENTED_ON
-  m_LightmapFlags: 1
+  m_Name: DemoMat6
+  m_Shader: {fileID: 4800000, guid: 7cd5de0b884b14f88ab763ef465e1799, type: 3}
+  m_ShaderKeywords: _RIMOVERLAP_ON _SEGMENTED_ON _SPCOVERLAP_ON
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,19 +39,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmmisTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b8f889a91be35174bbbb38d1057b6493, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -63,12 +55,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Ramp:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AmbientCol: 1
+    - _AmbientCol: 0
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0
@@ -76,55 +64,49 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionScaleUI: 0
-    - _FresnelBrightness: 0
-    - _FresnelPower: 0
-    - _FresnelShadowDropoff: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.2
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighIntensity: 1.5
-    - _LightScalar: 1
-    - _LowIntensity: 1
-    - _Lumin: 0.54
+    - _Lumin: 0
+    - _MaxAtten: 0
     - _MaxLight: 1
     - _Metallic: 0
-    - _MinLight: 0.137
+    - _MinLight: 0.734
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.01
-    - _OtlWidth: 3.7
-    - _OutlineSize: 10
+    - _Offset: 0.02
+    - _OtlWidth: 3.84
     - _Parallax: 0.02
-    - _RampLevels: 2
-    - _RimAlpha: 0
-    - _RimDropOff: 0
-    - _RimMax: 0.722
-    - _RimMin: 0.502
-    - _RimPower: 0
+    - _PostAtten: 0
+    - _RimIntense: 0.316
+    - _RimLimit: 0
+    - _RimOverlap: 1
+    - _RimSmooth: 1
+    - _RimTolerc: 0.623
     - _Segmented: 1
     - _ShnIntense: 0
     - _ShnOverlap: 0
-    - _ShnRange: 0.131
-    - _ShnSmooth: 0.016
+    - _ShnRange: 0.052
+    - _ShnSmooth: 0
     - _SmoothnessTextureChannel: 0
+    - _SpcIntence: 0
+    - _SpcLimit: 0
+    - _SpcOverlap: 1
+    - _SpcSmooth: 0
+    - _SpcTolerc: 0.05
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Steps: 18.3
-    - _StpSmooth: 1
+    - _Steps: 2.9
+    - _StpSmooth: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HColor: {r: 0.4433962, g: 0.36182803, b: 0.36182803, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
-    - _LowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OtlColor: {r: 0.1792453, g: 0.08032218, b: 0.08032218, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.05660379, g: 0.043520838, b: 0.043520838, a: 1}
-    - _SColor: {r: 0.14150941, g: 0.03137237, b: 0.03137237, a: 1}
-    - _ShnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.8763298, b: 0.23113209, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MaxColor: {r: 0, g: 0.8590385, b: 0.8962264, a: 1}
+    - _MinColor: {r: 0.21976727, g: 0, b: 0.4056604, a: 1}
+    - _OtlColor: {r: 0.20754719, g: 0.19279526, b: 0, a: 1}
+    - _RimColor: {r: 0.48124656, g: 0.43867922, b: 1, a: 1}
+    - _ShnColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpcColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
