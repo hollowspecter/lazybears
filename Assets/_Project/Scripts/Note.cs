@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using MoreMountains.Feedbacks;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
@@ -16,6 +18,7 @@ public class Note : MonoBehaviour
 	public float beatOfNote;
 	public bool isCultistNote = false;
 	public float cultistNoteAlpha = 0.5f;
+	public MMFeedbacks feedbackOnHit;
 
 	private SpriteRenderer spriteRenderer;
 	private float beatsShownInAdvance;
@@ -81,6 +84,8 @@ public class Note : MonoBehaviour
 		{
 			if (Input.GetKeyDown(keyCode))
 			{
+				if (feedbackOnHit != null)
+					feedbackOnHit.PlayFeedbacks();
 				Lifebar.Instance.OnHitSuccess();
 				Conductor.Instance.OnHitSuccess();
 				gameObject.SetActive(false);
