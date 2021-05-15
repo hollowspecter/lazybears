@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using MoreMountains.Feedbacks;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
 {
+	public delegate void CultistDelegate(string triggerName);
+	public static CultistDelegate CultistAction;
+
 	public enum Direction
 	{
 		Up, Down, Left, Right
@@ -13,7 +19,11 @@ public class Note : MonoBehaviour
 	public float length = 0f;
 	[Header("Read only")]
 	public float beatOfNote;
+	public bool isCultistNote = false;
+	public float cultistNoteAlpha = 0.5f;
+	public MMFeedbacks feedbackOnHit;
 
+	private SpriteRenderer spriteRenderer;
 	private float beatsShownInAdvance;
 	private Vector2 spawnPosition;
 	private Vector2 removePosition;
@@ -23,7 +33,12 @@ public class Note : MonoBehaviour
 
 	public void Initialize()
 	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		beatOfNote = Mathf.Abs(transform.position.y);
+		if (isCultistNote)
+		{
+			spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, cultistNoteAlpha);
+		}
 
 		switch (direction)
 		{
@@ -55,22 +70,37 @@ public class Note : MonoBehaviour
 		float t = (beatsShownInAdvance - (beatOfNote - Conductor.Instance.songPositionInBeats)) / beatsShownInAdvance;
 		transform.position = Vector2.Lerp(spawnPosition, removePosition, t);
 
+		// cultist notes go away by themselves
+		if (isCultistNote)
+		{
+			if (t >= 1f - Mathf.Epsilon)
+			{
+				TriggerCultistAction();
+				gameObject.SetActive(false);
+			}
+			return;
+		}
+
+
 		// check for input
-		if (Conductor.Instance.songPositionInBeats >= (beatOfNote - Conductor.Instance.gracePeriodInBeats) &&
-			Conductor.Instance.songPositionInBeats <= (beatOfNote + Conductor.Instance.gracePeriodInBeats))
+		if (Conductor.Instance.songPositionInBeats >= (beatOfNote - Conductor.Instance.HitPeriodInBeats) &&
+			Conductor.Instance.songPositionInBeats <= (beatOfNote + Conductor.Instance.HitPeriodInBeats))
 		{
 			if (Input.GetKeyDown(keyCode))
 			{
-				// TODO SUCCESS --> let conductor know that a note has been pressed correctly this frame, so no error
+				if (feedbackOnHit != null)
+					feedbackOnHit.PlayFeedbacks();
+				Lifebar.Instance.OnHitSuccess();
+				Conductor.Instance.OnHitSuccess();
 				gameObject.SetActive(false);
 				return;
 			}
 		}
 
 		// Deactivate if too long
-		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.gracePeriodInBeats)
+		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.HitPeriodInBeats)
 		{
-			// TODO FAILED
+			Lifebar.Instance.OnMiss();
 			gameObject.SetActive(false);
 		}
 	}
@@ -80,6 +110,25 @@ public class Note : MonoBehaviour
 		if (length > 0f)
 		{
 			Gizmos.DrawLine(transform.position, transform.position + Vector3.down * length);
+		}
+	}
+
+	private void TriggerCultistAction()
+	{
+		switch (direction)
+		{
+			case Direction.Up:
+				CultistAction?.Invoke("Up");
+				break;
+			case Direction.Down:
+				CultistAction?.Invoke("Down");
+				break;
+			case Direction.Left:
+				CultistAction?.Invoke("Left");
+				break;
+			case Direction.Right:
+				CultistAction?.Invoke("Right");
+				break;
 		}
 	}
 }

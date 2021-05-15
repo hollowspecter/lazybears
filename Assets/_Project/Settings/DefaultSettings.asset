@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453416b24f6a74f4ab2253392c618759, type: 3}
+  m_Name: DefaultSettings
+  m_EditorClassIdentifier: 
+  HitPeriodInSeconds: 0.4
+  HealthStartAmount: 0.8
+  RecoveryAmount: 0.05
+  MissPenalty: 0.1
+  WrongInputPenalty: 0.05
+  GraceTimespan: 2
+  GraceAmount: 0.5
+  BeatsShownInAdvance: 8
