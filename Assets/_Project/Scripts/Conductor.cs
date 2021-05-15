@@ -8,27 +8,25 @@ public class Conductor : MonoBehaviour
 {
 	public static Conductor Instance = null;
 
-	// Song beats per minute
-	// This is determined by the song you're trying to sync up to
+	[Header("Settings")]
 	public float songBpm;
+	public float firstBeatOffset;
+	public float beatsShownInAdvance = 4;
+	public float gracePeriodInBeats = 0.2f;
 
-	// Number of seconds for each song beat
+	[Header("Read only")]
 	public float secPerBeat;
-
-	// Current song position, in seconds
 	public float songPosition;
-
-	// Current song position in beats
 	public float songPositionInBeats;
-
-	// How many seconds have passed since the song started
 	public float dspSongTime;
 
-	// The offset to the first beat of the song in seconds
-	public float firstBeatOffset;
+	[Header("References")]
+	public Beatmap beatmap;
+	public Transform spawnPosition;
+	public Transform removePos;
 
-	// An AudioSource attached to this GameObject that will play the music
 	private AudioSource musicSource;
+	private int nextIndex = 0;
 
 	private void Awake()
 	{
@@ -54,5 +52,13 @@ public class Conductor : MonoBehaviour
 	{
 		songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
 		songPositionInBeats = songPosition / secPerBeat;
+
+		// enable notes
+		if (nextIndex < beatmap.notes.Length &&
+			beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + beatsShownInAdvance)
+		{
+			beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, beatsShownInAdvance);
+			nextIndex++;
+		}
 	}
 }
