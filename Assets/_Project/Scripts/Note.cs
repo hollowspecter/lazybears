@@ -11,17 +11,35 @@ public class Note : MonoBehaviour
 
 	public Direction direction;
 	public float length = 0f;
+	[Header("Read only")]
+	public float beatOfNote;
 
-	private float beatOfNote;
 	private float beatsShownInAdvance;
 	private Vector2 spawnPosition;
 	private Vector2 removePosition;
+	private KeyCode keyCode;
 
 	public float BeatOfNote => beatOfNote;
 
 	public void Initialize()
 	{
 		beatOfNote = Mathf.Abs(transform.position.y);
+
+		switch (direction)
+		{
+			case Direction.Up:
+				keyCode = KeyCode.UpArrow;
+				break;
+			case Direction.Down:
+				keyCode = KeyCode.DownArrow;
+				break;
+			case Direction.Left:
+				keyCode = KeyCode.LeftArrow;
+				break;
+			case Direction.Right:
+				keyCode = KeyCode.RightArrow;
+				break;
+		}
 	}
 
 	public void Enable(float _spawnPosition, float _removePosition, float _beatsShownInAdvance)
@@ -41,10 +59,7 @@ public class Note : MonoBehaviour
 		if (Conductor.Instance.songPositionInBeats >= (beatOfNote - Conductor.Instance.gracePeriodInBeats) &&
 			Conductor.Instance.songPositionInBeats <= (beatOfNote + Conductor.Instance.gracePeriodInBeats))
 		{
-			if ((direction == Direction.Down && Input.GetKeyDown(KeyCode.DownArrow)) ||
-				(direction == Direction.Up && Input.GetKeyDown(KeyCode.UpArrow)) ||
-				(direction == Direction.Left && Input.GetKeyDown(KeyCode.LeftArrow)) ||
-				(direction == Direction.Right && Input.GetKeyDown(KeyCode.RightArrow)))
+			if (Input.GetKeyDown(keyCode))
 			{
 				// TODO SUCCESS --> let conductor know that a note has been pressed correctly this frame, so no error
 				gameObject.SetActive(false);
