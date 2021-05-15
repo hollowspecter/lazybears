@@ -7,8 +7,8 @@ using DG.Tweening;
 public class ArrowFeedback : MonoBehaviour
 {
 	public KeyCode keyCode;
-	public Color activeColor;
-	public Color inactiveColor;
+	public Sprite activeSprite;
+	public Sprite inactiveSprite;
 
 	private SpriteRenderer spriteRenderer;
 	private bool pressed = false;
@@ -16,6 +16,7 @@ public class ArrowFeedback : MonoBehaviour
 	private void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		Deactivate();
 	}
 
 	private void Update()
@@ -35,12 +36,12 @@ public class ArrowFeedback : MonoBehaviour
 	private void Activate()
 	{
 		pressed = true;
-		spriteRenderer.color = activeColor;
+		spriteRenderer.sprite = activeSprite;
 	}
 
 	public void Deactivate()
 	{
 		pressed = false;
-		spriteRenderer.color = inactiveColor;
+		spriteRenderer.sprite = inactiveSprite;
 	}
 }
