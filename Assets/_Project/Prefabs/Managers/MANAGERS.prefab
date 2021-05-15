@@ -64,9 +64,9 @@ MonoBehaviour:
   onMiss:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029821759692005678}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 6052251722121642926}
+        m_TargetAssemblyTypeName: AudioUtility, Assembly-CSharp
+        m_MethodName: PlayRandomly
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -79,9 +79,9 @@ MonoBehaviour:
   onWrongInput:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029821758713887872}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 7699854573747855007}
+        m_TargetAssemblyTypeName: AudioUtility, Assembly-CSharp
+        m_MethodName: PlayRandomly
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5029821758713887875}
   - component: {fileID: 5029821758713887872}
+  - component: {fileID: 7699854573747855007}
   m_Layer: 0
   m_Name: Wrong Input Sound
   m_TagString: Untagged
@@ -219,6 +220,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7699854573747855007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029821758713887874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ffbe92d4b591b4c9675acbb870f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMaxPitch: {x: 0.8, y: 1.2}
+  minMaxVolume: {x: 1, y: 1}
 --- !u!1 &5029821759280014687
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songBpm: 120
-  firstBeatOffset: 0
+  firstBeatOffset: 1.9
   startSongOnStart: 1
   secPerBeat: 0
   songPosition: 0
@@ -277,9 +292,9 @@ MonoBehaviour:
   onWin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8300000, guid: 3bda6b32ee499cd42a8f757470b75882, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -299,7 +314,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4948822856106465579, guid: 792470ff408182e47a088a02c952c102, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 37af941eab36310458db172efbc8c7c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 093851bbf7694234abd63a55115f1471, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -429,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5029821759692005841}
   - component: {fileID: 5029821759692005678}
+  - component: {fileID: 6052251722121642926}
   m_Layer: 0
   m_Name: Miss Sound
   m_TagString: Untagged
@@ -546,6 +562,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6052251722121642926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029821759692005840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ffbe92d4b591b4c9675acbb870f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMaxPitch: {x: 0.8, y: 1.2}
+  minMaxVolume: {x: 1, y: 1}
 --- !u!1 &5029821759735285149
 GameObject:
   m_ObjectHideFlags: 0

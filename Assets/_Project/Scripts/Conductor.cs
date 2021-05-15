@@ -74,7 +74,7 @@ public class Conductor : MonoBehaviour
 			songPositionInBeats = songPosition / secPerBeat;
 
 			// enable notes
-			if (nextIndex < beatmap.notes.Length &&
+			if (nextIndex < beatmap.notes.Count &&
 				beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + settings.settings.BeatsShownInAdvance)
 			{
 				beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, settings.settings.BeatsShownInAdvance);
@@ -89,8 +89,8 @@ public class Conductor : MonoBehaviour
 				inputThisFrame = true;
 
 			// check if the song is done by checking if the last note has been despawned
-			if (nextIndex >= beatmap.notes.Length &&
-				beatmap.notes[beatmap.notes.Length - 1].gameObject.activeSelf == false)
+			if (nextIndex >= beatmap.notes.Count &&
+				beatmap.notes[beatmap.notes.Count - 1].gameObject.activeSelf == false)
 			{
 				OnWinBeatmap();
 			}

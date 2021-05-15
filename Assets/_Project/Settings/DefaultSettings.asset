@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DefaultSettings
   m_EditorClassIdentifier: 
   HitPeriodInSeconds: 0.4
-  HealthStartAmount: 0.8
+  HealthStartAmount: 0.5
   RecoveryAmount: 0.05
   MissPenalty: 0.1
   WrongInputPenalty: 0.05
-  GraceTimespan: 2
+  GraceTimespan: 1
   GraceAmount: 0.5
   BeatsShownInAdvance: 8

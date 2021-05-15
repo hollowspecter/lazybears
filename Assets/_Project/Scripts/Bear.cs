@@ -15,6 +15,7 @@ public class Bear : MonoBehaviour
 
 	private void Start()
 	{
+		animator.SetFloat("SecPerBeat", Conductor.Instance.secPerBeat);
 		Lifebar.Instance.onMiss.AddListener(Fail);
 		Lifebar.Instance.onWrongInput.AddListener(Fail);
 	}
