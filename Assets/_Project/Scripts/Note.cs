@@ -25,8 +25,8 @@ public class Note : MonoBehaviour
 
 	private SpriteRenderer spriteRenderer;
 	private float beatsShownInAdvance;
-	private Vector2 spawnPosition;
-	private Vector2 removePosition;
+	private Vector3 spawnPosition;
+	private Vector3 removePosition;
 	private KeyCode keyCode;
 
 	public float BeatOfNote => beatOfNote;
@@ -59,8 +59,8 @@ public class Note : MonoBehaviour
 
 	public void Enable(float _spawnPosition, float _removePosition, float _beatsShownInAdvance)
 	{
-		spawnPosition = new Vector2(transform.position.x, _spawnPosition);
-		removePosition = new Vector2(transform.position.x, _removePosition);
+		spawnPosition = new Vector3(transform.position.x, _spawnPosition, transform.position.z);
+		removePosition = new Vector3(transform.position.x, _removePosition, transform.position.z);
 		beatsShownInAdvance = _beatsShownInAdvance;
 		gameObject.SetActive(true);
 	}
@@ -68,7 +68,7 @@ public class Note : MonoBehaviour
 	private void Update()
 	{
 		float t = (beatsShownInAdvance - (beatOfNote - Conductor.Instance.songPositionInBeats)) / beatsShownInAdvance;
-		transform.position = Vector2.Lerp(spawnPosition, removePosition, t);
+		transform.position = Vector3.Lerp(spawnPosition, removePosition, t);
 
 		// cultist notes go away by themselves
 		if (isCultistNote)

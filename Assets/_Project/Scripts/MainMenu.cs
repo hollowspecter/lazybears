@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 	public string gameSceneName = "BasicGameplay";
+	public string environmentSceneName = "Environment";
 	public GameObject howToPlay;
 	public GameObject credits;
 
@@ -31,7 +32,9 @@ public class MainMenu : MonoBehaviour
 	{
 		if (isSubMenuOpen)
 			return;
+
 		SceneManager.LoadScene(gameSceneName);
+		SceneManager.LoadScene(environmentSceneName, LoadSceneMode.Additive);
 	}
 
 	public void OnHowToPlayPressed()
