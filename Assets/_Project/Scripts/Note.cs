@@ -7,8 +7,12 @@ using MoreMountains.Feedbacks;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
 {
+	private const float CultistLatencyCorrection = 0.05f;
+
 	public delegate void CultistDelegate(string triggerName);
 	public static CultistDelegate CultistAction;
+	public delegate void DirectionSuccessDelegate(KeyCode keyCode);
+	public static DirectionSuccessDelegate NoteSuccess;
 
 	public enum Direction
 	{
@@ -73,7 +77,7 @@ public class Note : MonoBehaviour
 		// cultist notes go away by themselves
 		if (isCultistNote)
 		{
-			if (t >= 1f - Mathf.Epsilon)
+			if (t >= 1f - CultistLatencyCorrection)
 			{
 				TriggerCultistAction();
 				gameObject.SetActive(false);
@@ -92,6 +96,7 @@ public class Note : MonoBehaviour
 					feedbackOnHit.PlayFeedbacks();
 				Lifebar.Instance.OnHitSuccess();
 				Conductor.Instance.OnHitSuccess();
+				NoteSuccess(keyCode);
 				gameObject.SetActive(false);
 				return;
 			}
