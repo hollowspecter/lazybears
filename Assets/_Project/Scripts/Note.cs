@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
 {
 	public enum Direction
@@ -13,7 +14,10 @@ public class Note : MonoBehaviour
 	public float length = 0f;
 	[Header("Read only")]
 	public float beatOfNote;
+	public bool isCultistNote = false;
+	public float cultistNoteAlpha = 0.5f;
 
+	private SpriteRenderer spriteRenderer;
 	private float beatsShownInAdvance;
 	private Vector2 spawnPosition;
 	private Vector2 removePosition;
@@ -23,7 +27,12 @@ public class Note : MonoBehaviour
 
 	public void Initialize()
 	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		beatOfNote = Mathf.Abs(transform.position.y);
+		if (isCultistNote)
+		{
+			spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, cultistNoteAlpha);
+		}
 
 		switch (direction)
 		{
@@ -55,9 +64,20 @@ public class Note : MonoBehaviour
 		float t = (beatsShownInAdvance - (beatOfNote - Conductor.Instance.songPositionInBeats)) / beatsShownInAdvance;
 		transform.position = Vector2.Lerp(spawnPosition, removePosition, t);
 
+		// cultist notes go away by themselves
+		if (isCultistNote)
+		{
+			if (t >= 1f - Mathf.Epsilon)
+			{
+				gameObject.SetActive(false);
+			}
+			return;
+		}
+
+
 		// check for input
-		if (Conductor.Instance.songPositionInBeats >= (beatOfNote - Conductor.Instance.gracePeriodInBeats) &&
-			Conductor.Instance.songPositionInBeats <= (beatOfNote + Conductor.Instance.gracePeriodInBeats))
+		if (Conductor.Instance.songPositionInBeats >= (beatOfNote - Conductor.Instance.HitPeriodInBeats) &&
+			Conductor.Instance.songPositionInBeats <= (beatOfNote + Conductor.Instance.HitPeriodInBeats))
 		{
 			if (Input.GetKeyDown(keyCode))
 			{
@@ -68,9 +88,9 @@ public class Note : MonoBehaviour
 		}
 
 		// Deactivate if too long
-		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.gracePeriodInBeats)
+		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.HitPeriodInBeats)
 		{
-			// TODO FAILED
+			Conductor.Instance.onError?.Invoke();
 			gameObject.SetActive(false);
 		}
 	}

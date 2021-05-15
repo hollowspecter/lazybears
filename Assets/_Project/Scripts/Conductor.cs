@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Source: https://www.gamasutra.com/blogs/GrahamTattersall/20190515/342454/Coding_to_the_Beat__Under_the_Hood_of_a_Rhythm_Game_in_Unity.php
 [RequireComponent(typeof(AudioSource))]
@@ -12,7 +13,9 @@ public class Conductor : MonoBehaviour
 	public float songBpm;
 	public float firstBeatOffset;
 	public float beatsShownInAdvance = 4;
-	public float gracePeriodInBeats = 0.2f;
+	[SerializeField]
+	protected float hitPeriodInSeconds = 0.2f;
+	public bool startSongOnStart = true;
 
 	[Header("Read only")]
 	public float secPerBeat;
@@ -25,8 +28,17 @@ public class Conductor : MonoBehaviour
 	public Transform spawnPosition;
 	public Transform removePos;
 
+	[Header("Unity Events")]
+	public UnityEvent onError;
+
 	private AudioSource musicSource;
 	private int nextIndex = 0;
+	private bool songIsPlaying = false;
+
+	public float HitPeriodInBeats
+	{
+		get; private set;
+	}
 
 	private void Awake()
 	{
@@ -40,25 +52,36 @@ public class Conductor : MonoBehaviour
 
 		musicSource = GetComponent<AudioSource>();
 		secPerBeat = 60f / songBpm;
+		HitPeriodInBeats = hitPeriodInSeconds / secPerBeat;
 	}
 
 	void Start()
 	{
-		dspSongTime = (float)AudioSettings.dspTime;
-		musicSource.Play();
+		if (startSongOnStart)
+			StartSong();
 	}
 
 	void Update()
 	{
-		songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
-		songPositionInBeats = songPosition / secPerBeat;
-
-		// enable notes
-		if (nextIndex < beatmap.notes.Length &&
-			beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + beatsShownInAdvance)
+		if (songIsPlaying)
 		{
-			beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, beatsShownInAdvance);
-			nextIndex++;
+			songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+			songPositionInBeats = songPosition / secPerBeat;
+
+			// enable notes
+			if (nextIndex < beatmap.notes.Length &&
+				beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + beatsShownInAdvance)
+			{
+				beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, beatsShownInAdvance);
+				nextIndex++;
+			}
 		}
+	}
+
+	public void StartSong()
+	{
+		dspSongTime = (float)AudioSettings.dspTime;
+		musicSource.Play();
+		songIsPlaying = true;
 	}
 }
