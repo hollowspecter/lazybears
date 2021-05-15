@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songBpm: 120
-  firstBeatOffset: 0
+  firstBeatOffset: 1.9
   startSongOnStart: 1
   secPerBeat: 0
   songPosition: 0
@@ -314,7 +314,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4948822856106465579, guid: 792470ff408182e47a088a02c952c102, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3bda6b32ee499cd42a8f757470b75882, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 093851bbf7694234abd63a55115f1471, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
