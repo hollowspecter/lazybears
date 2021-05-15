@@ -10,16 +10,7 @@ public class Lifebar : MonoBehaviour
 
 
 	[Header("Settings")]
-	[Range(0.1f, 1f)]
-	public float healthStartAmount;
-	public float recoveryAmount = 0.1f;
-	public float missPenalty = 0.05f;
-	public float wrongInputPenalty = 0.03f;
-	[Tooltip("How long the grace time stays active in seconds.")]
-	public float graceTimespan = 2f;
-	[Tooltip("When the player loses health during grace time, they only lose this % less")]
-	[Range(0f, 1f)]
-	public float graceAmount = 0.5f;
+	public SettingsWrapper settings;
 
 	[Header("UnityEvents")]
 	public UnityEvent onLose;
@@ -32,7 +23,7 @@ public class Lifebar : MonoBehaviour
 	private float lastGraceTime;
 	private float currentHealth;
 
-	public bool IsGraceTimeActive => Time.time < lastGraceTime + graceTimespan;
+	public bool IsGraceTimeActive => Time.time < lastGraceTime + settings.settings.GraceTimespan;
 
 	public float CurrentHealth
 	{
@@ -60,7 +51,7 @@ public class Lifebar : MonoBehaviour
 
 	private void Initialize()
 	{
-		CurrentHealth = healthStartAmount;
+		CurrentHealth = settings.settings.HealthStartAmount;
 	}
 
 	private void OnValueChanged()
@@ -75,21 +66,21 @@ public class Lifebar : MonoBehaviour
 
 	public void OnMiss()
 	{
-		CurrentHealth = currentHealth - missPenalty * (IsGraceTimeActive ? graceAmount : 1f);
+		CurrentHealth = currentHealth - settings.settings.MissPenalty * (IsGraceTimeActive ? settings.settings.GraceAmount : 1f);
 		lastGraceTime = Time.time;
 		onMiss?.Invoke();
 	}
 
 	public void OnWrongInput()
 	{
-		CurrentHealth = currentHealth - wrongInputPenalty * (IsGraceTimeActive ? graceAmount : 1f);
+		CurrentHealth = currentHealth - settings.settings.WrongInputPenalty * (IsGraceTimeActive ? settings.settings.GraceAmount : 1f);
 		lastGraceTime = Time.time;
 		onWrongInput?.Invoke();
 	}
 
 	public void OnHitSuccess()
 	{
-		CurrentHealth = currentHealth + recoveryAmount;
+		CurrentHealth = currentHealth + settings.settings.RecoveryAmount;
 	}
 
 	private void OnLose()

@@ -13,9 +13,6 @@ public class Conductor : MonoBehaviour
 	[Header("Settings")]
 	public float songBpm;
 	public float firstBeatOffset;
-	public float beatsShownInAdvance = 4;
-	[SerializeField]
-	protected float hitPeriodInSeconds = 0.2f;
 	public bool startSongOnStart = true;
 
 	[Header("Read only")]
@@ -28,6 +25,10 @@ public class Conductor : MonoBehaviour
 	public Beatmap beatmap;
 	public Transform spawnPosition;
 	public Transform removePos;
+	public SettingsWrapper settings;
+
+	[Header("UnityEvents")]
+	public UnityEvent onWin;
 
 	private AudioSource musicSource;
 	private int nextIndex = 0;
@@ -53,7 +54,7 @@ public class Conductor : MonoBehaviour
 
 		musicSource = GetComponent<AudioSource>();
 		secPerBeat = 60f / songBpm;
-		HitPeriodInBeats = hitPeriodInSeconds / secPerBeat;
+		HitPeriodInBeats = settings.settings.HitPeriodInSeconds / secPerBeat;
 	}
 
 	void Start()
@@ -74,17 +75,25 @@ public class Conductor : MonoBehaviour
 
 			// enable notes
 			if (nextIndex < beatmap.notes.Length &&
-				beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + beatsShownInAdvance)
+				beatmap.notes[nextIndex].BeatOfNote < songPositionInBeats + settings.settings.BeatsShownInAdvance)
 			{
-				beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, beatsShownInAdvance);
+				beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, settings.settings.BeatsShownInAdvance);
 				nextIndex++;
 			}
 
+			// check for input
 			if (Input.GetKeyDown(KeyCode.DownArrow) ||
 				Input.GetKeyDown(KeyCode.UpArrow) ||
 				Input.GetKeyDown(KeyCode.LeftArrow) ||
 				Input.GetKeyDown(KeyCode.RightArrow))
 				inputThisFrame = true;
+
+			// check if the song is done by checking if the last note has been despawned
+			if (nextIndex >= beatmap.notes.Length &&
+				beatmap.notes[beatmap.notes.Length - 1].gameObject.activeSelf == false)
+			{
+				OnWinBeatmap();
+			}
 		}
 	}
 
@@ -116,5 +125,11 @@ public class Conductor : MonoBehaviour
 	public void OnHitSuccess()
 	{
 		hitNoteThisFrame = true;
+	}
+
+	private void OnWinBeatmap()
+	{
+		songIsPlaying = false;
+		onWin?.Invoke();
 	}
 }
