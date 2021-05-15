@@ -81,7 +81,8 @@ public class Note : MonoBehaviour
 		{
 			if (Input.GetKeyDown(keyCode))
 			{
-				// TODO SUCCESS --> let conductor know that a note has been pressed correctly this frame, so no error
+				Lifebar.Instance.OnHitSuccess();
+				Conductor.Instance.OnHitSuccess();
 				gameObject.SetActive(false);
 				return;
 			}
@@ -91,6 +92,7 @@ public class Note : MonoBehaviour
 		if (Conductor.Instance.songPositionInBeats > beatOfNote + length + Conductor.Instance.HitPeriodInBeats)
 		{
 			Conductor.Instance.onError?.Invoke();
+			Lifebar.Instance.OnMiss();
 			gameObject.SetActive(false);
 		}
 	}

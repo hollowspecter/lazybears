@@ -35,6 +35,9 @@ public class Conductor : MonoBehaviour
 	private int nextIndex = 0;
 	private bool songIsPlaying = false;
 
+	private bool inputThisFrame = false;
+	private bool hitNoteThisFrame = false;
+
 	public float HitPeriodInBeats
 	{
 		get; private set;
@@ -63,6 +66,9 @@ public class Conductor : MonoBehaviour
 
 	void Update()
 	{
+		inputThisFrame = false;
+		hitNoteThisFrame = false;
+
 		if (songIsPlaying)
 		{
 			songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
@@ -75,6 +81,21 @@ public class Conductor : MonoBehaviour
 				beatmap.notes[nextIndex].Enable(spawnPosition.position.y, removePos.position.y, beatsShownInAdvance);
 				nextIndex++;
 			}
+
+			if (Input.GetKeyDown(KeyCode.DownArrow) ||
+				Input.GetKeyDown(KeyCode.UpArrow) ||
+				Input.GetKeyDown(KeyCode.LeftArrow) ||
+				Input.GetKeyDown(KeyCode.RightArrow))
+				inputThisFrame = true;
+		}
+	}
+
+	private void LateUpdate()
+	{
+		if (inputThisFrame == true &&
+			hitNoteThisFrame == false)
+		{
+			Lifebar.Instance.OnWrongInput();
 		}
 	}
 
@@ -83,5 +104,10 @@ public class Conductor : MonoBehaviour
 		dspSongTime = (float)AudioSettings.dspTime;
 		musicSource.Play();
 		songIsPlaying = true;
+	}
+
+	public void OnHitSuccess()
+	{
+		hitNoteThisFrame = true;
 	}
 }
