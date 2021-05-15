@@ -128,6 +128,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3340113127028661935, guid: 29457db9c329c8c4d94ea5ffa59016be, type: 3}
   m_PrefabInstance: {fileID: 3340113126999856322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &140324011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5029821759280014687, guid: 0394e499eeeaa2a41a8fab59c5f61385, type: 3}
+  m_PrefabInstance: {fileID: 5029821759514917806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &140324015
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140324011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24e0d39df01e8c949904ee68bb0ad671, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &332300378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6722916928290925644, guid: 8cc1883548a06e447b44480c05c4042b, type: 3}
@@ -2902,6 +2926,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1331615616}
     m_Modifications:
+    - target: {fileID: 4458220478731262480, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458220478731262480, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458220478731262480, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458220478731262480, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458220478731262480, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136856, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_Name
       value: Cultist
