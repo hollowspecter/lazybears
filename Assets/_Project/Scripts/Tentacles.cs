@@ -10,6 +10,6 @@ public class Tentacles : MonoBehaviour
 
 	public void RaiseTheTentacles()
 	{
-		TentaclesPivot.DOLocalMoveY(0f, moveInDuration);
+		TentaclesPivot.DOLocalMoveZ(0f, moveInDuration);
 	}
 }
