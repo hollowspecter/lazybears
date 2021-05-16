@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453416b24f6a74f4ab2253392c618759, type: 3}
   m_Name: DefaultSettings
   m_EditorClassIdentifier: 
-  HitPeriodInSeconds: 0.4
+  HitPeriodInSeconds: 0.25
   HealthStartAmount: 0.5
   RecoveryAmount: 0.05
   MissPenalty: 0.1
