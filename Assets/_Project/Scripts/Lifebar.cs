@@ -25,6 +25,18 @@ public class Lifebar : MonoBehaviour
 
 	public bool IsGraceTimeActive => Time.time < lastGraceTime + settings.settings.GraceTimespan;
 
+	public int Misses
+	{
+		private set;
+		get;
+	}
+
+	public int WrongInputs
+	{
+		private set;
+		get;
+	}
+
 	public float CurrentHealth
 	{
 		get => currentHealth;
@@ -68,6 +80,7 @@ public class Lifebar : MonoBehaviour
 	{
 		CurrentHealth = currentHealth - settings.settings.MissPenalty * (IsGraceTimeActive ? settings.settings.GraceAmount : 1f);
 		lastGraceTime = Time.time;
+		Misses++;
 		onMiss?.Invoke();
 	}
 
@@ -75,6 +88,7 @@ public class Lifebar : MonoBehaviour
 	{
 		CurrentHealth = currentHealth - settings.settings.WrongInputPenalty * (IsGraceTimeActive ? settings.settings.GraceAmount : 1f);
 		lastGraceTime = Time.time;
+		WrongInputs++;
 		onWrongInput?.Invoke();
 	}
 
