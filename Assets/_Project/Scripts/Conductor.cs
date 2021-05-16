@@ -14,6 +14,7 @@ public class Conductor : MonoBehaviour
 	public float songBpm;
 	public float firstBeatOffset;
 	public bool startSongOnStart = true;
+	public float startingTime = 0f;
 
 	[Header("Read only")]
 	public float secPerBeat;
@@ -72,7 +73,7 @@ public class Conductor : MonoBehaviour
 
 		if (songIsPlaying)
 		{
-			songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+			songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset + startingTime);
 			songPositionInBeats = songPosition / secPerBeat;
 
 			// enable notes
@@ -112,6 +113,7 @@ public class Conductor : MonoBehaviour
 	public void StartSong()
 	{
 		dspSongTime = (float)AudioSettings.dspTime;
+		musicSource.time = startingTime;
 		musicSource.Play();
 		songIsPlaying = true;
 		musicSource.volume = 1f;

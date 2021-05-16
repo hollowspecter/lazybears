@@ -66,7 +66,17 @@ public class Note : MonoBehaviour
 		spawnPosition = new Vector3(transform.position.x, _spawnPosition, transform.position.z);
 		removePosition = new Vector3(transform.position.x, _removePosition, transform.position.z);
 		beatsShownInAdvance = _beatsShownInAdvance;
-		gameObject.SetActive(true);
+
+		// check if it is already out of range
+		float t = (beatsShownInAdvance - (beatOfNote - Conductor.Instance.songPositionInBeats)) / beatsShownInAdvance;
+		if (t >= 1f)
+		{
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			gameObject.SetActive(true);
+		}
 	}
 
 	private void Update()
