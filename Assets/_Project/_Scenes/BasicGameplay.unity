@@ -7239,6 +7239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3258881524048523387, guid: 28332aa6558d389408636053447be8ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6160903066816628932, guid: 28332aa6558d389408636053447be8ca, type: 3}
       propertyPath: triggerEventAtSongTime
       value: 115
@@ -7249,7 +7253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160903066816628933, guid: 28332aa6558d389408636053447be8ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 6160903066816628933, guid: 28332aa6558d389408636053447be8ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7291,12 +7295,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: TENTACLESS
       objectReference: {fileID: 0}
+    - target: {fileID: 6160903067417231008, guid: 28332aa6558d389408636053447be8ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6160903068530868208, guid: 28332aa6558d389408636053447be8ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160903068530868208, guid: 28332aa6558d389408636053447be8ca, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160903068530868208, guid: 28332aa6558d389408636053447be8ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.66211
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777955612987673031, guid: 28332aa6558d389408636053447be8ca, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
