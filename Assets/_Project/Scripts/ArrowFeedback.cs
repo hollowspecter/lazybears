@@ -12,6 +12,8 @@ public class ArrowFeedback : MonoBehaviour
 	public Sprite inactiveSprite;
 	public MMFeedbacks pressFeedback;
 	public MMFeedbacks successFeedback;
+	public bool isEnemyArrow = false;
+	public string cultistTriggerName;
 
 	private SpriteRenderer spriteRenderer;
 	private bool pressed = false;
@@ -24,16 +26,25 @@ public class ArrowFeedback : MonoBehaviour
 
 	private void OnEnable()
 	{
-		Note.NoteSuccess += OnNoteSuccess;
+		if (!isEnemyArrow)
+			Note.NoteSuccess += OnNoteSuccess;
+		else
+			Note.CultistAction += OnCultistAction;
 	}
 
 	private void OnDisable()
 	{
-		Note.NoteSuccess -= OnNoteSuccess;
+		if (!isEnemyArrow)
+			Note.NoteSuccess -= OnNoteSuccess;
+		else
+			Note.CultistAction -= OnCultistAction;
 	}
 
 	private void Update()
 	{
+		if (isEnemyArrow)
+			return;
+
 		if (Input.GetKey(keyCode))
 		{
 			if (!pressed)
@@ -67,5 +78,16 @@ public class ArrowFeedback : MonoBehaviour
 	{
 		pressed = false;
 		spriteRenderer.sprite = inactiveSprite;
+	}
+
+	private void OnCultistAction(string _triggerName)
+	{
+		if (cultistTriggerName == _triggerName)
+		{
+			if (pressFeedback != null)
+				pressFeedback.PlayFeedbacks();
+			if (successFeedback != null)
+				successFeedback.PlayFeedbacks();
+		}
 	}
 }
