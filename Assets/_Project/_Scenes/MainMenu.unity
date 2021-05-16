@@ -2613,8 +2613,10 @@ MonoBehaviour:
 
     Keandra Forrester-Addie
 
-    Vivien
-    Baguio'
+    Svenja
+    Scholl
+
+    Vivien Baguio'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e94b446bf8e68448aaa98682ff20655, type: 2}
   m_sharedMaterial: {fileID: 1173768447960620724, guid: 9e94b446bf8e68448aaa98682ff20655, type: 2}
@@ -3161,8 +3163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f220afdc74577c48880935e5c8fe8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: BasicGameplay
-  environmentSceneName: Environment
+  storySceneName: Story
   howToPlay: {fileID: 157983269}
   credits: {fileID: 1225627765}
 --- !u!1 &2027660801
