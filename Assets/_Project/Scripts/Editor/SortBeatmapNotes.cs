@@ -51,6 +51,9 @@ public class SortBeatmapNotes
 					notes[i].transform.localPosition = new Vector3(6f, notes[i].transform.localPosition.y, notes[i].transform.localPosition.z);
 				}
 			}
+
+			notes[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+
 		}//endfor
 
 		EditorUtility.SetDirty(beatmap.gameObject);
