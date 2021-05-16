@@ -10719,8 +10719,8 @@ MonoBehaviour:
   Sfx: {fileID: 8300000, guid: 90076b8fd9a9a014c97d2d4b6dae7764, type: 3}
   RandomSfx: []
   PlayMethod: 1
-  MinVolume: 0.5
-  MaxVolume: 0.5
+  MinVolume: 0.15
+  MaxVolume: 0.15
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -7086974455619426925, guid: 792470ff408182e47a088a02c952c102, type: 2}
@@ -16198,8 +16198,8 @@ MonoBehaviour:
   Sfx: {fileID: 8300000, guid: 90076b8fd9a9a014c97d2d4b6dae7764, type: 3}
   RandomSfx: []
   PlayMethod: 1
-  MinVolume: 0.5
-  MaxVolume: 0.5
+  MinVolume: 0.15
+  MaxVolume: 0.15
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -7086974455619426925, guid: 792470ff408182e47a088a02c952c102, type: 2}
@@ -16333,8 +16333,8 @@ MonoBehaviour:
   Sfx: {fileID: 8300000, guid: 90076b8fd9a9a014c97d2d4b6dae7764, type: 3}
   RandomSfx: []
   PlayMethod: 1
-  MinVolume: 0.5
-  MaxVolume: 0.5
+  MinVolume: 0.15
+  MaxVolume: 0.15
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: -7086974455619426925, guid: 792470ff408182e47a088a02c952c102, type: 2}
@@ -16655,11 +16655,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 90076b8fd9a9a014c97d2d4b6dae7764, type: 3}
     - target: {fileID: 5260994108815955241, guid: dd5ea80cde0658a48b296b1fb7785679, type: 3}
       propertyPath: MaxVolume
-      value: 0.5
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5260994108815955241, guid: dd5ea80cde0658a48b296b1fb7785679, type: 3}
       propertyPath: MinVolume
-      value: 0.5
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5260994108815955241, guid: dd5ea80cde0658a48b296b1fb7785679, type: 3}
       propertyPath: PlayMethod
