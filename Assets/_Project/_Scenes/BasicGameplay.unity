@@ -7050,10 +7050,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 708118679}
     - target: {fileID: 5029821759280014682, guid: 0394e499eeeaa2a41a8fab59c5f61385, type: 3}
-      propertyPath: startingTime
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5029821759280014682, guid: 0394e499eeeaa2a41a8fab59c5f61385, type: 3}
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 1905685331}
@@ -7318,35 +7314,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.88000023
+      value: -4.5800014
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 10.32
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.430002
+      value: -13.110004
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99568015
+      value: 0.95510924
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.092850015
+      value: 0.28421518
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.07711034
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105355, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000037252899
+      value: 0.032279756
       objectReference: {fileID: 0}
     - target: {fileID: 6606367082654105406, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: field of view
-      value: 37
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083079287255, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: IdleFrequency
