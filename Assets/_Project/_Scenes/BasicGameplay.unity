@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -331,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -0.154
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5502,7 +5502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -0.104
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5929,7 +5929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0.195
       objectReference: {fileID: 0}
     - target: {fileID: 4458220479746136934, guid: a2f671f32e69c5e41ade8a1543b81e8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6850,7 +6850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083158453301, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_FrequencyGain
-      value: 0.5496843
+      value: 0.5496845
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083215703970, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_Name
@@ -6902,7 +6902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083307500517, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_FrequencyGain
-      value: 0.5496843
+      value: 0.5496845
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083715580627, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: IdleFrequency
@@ -6910,7 +6910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606367083834166030, guid: ea76e113510b089498d904123364454c, type: 3}
       propertyPath: m_FrequencyGain
-      value: 0.5496845
+      value: 0.5496847
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea76e113510b089498d904123364454c, type: 3}
