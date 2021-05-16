@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06e68c6e324a7a42a8e627c89022dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEventAtSongTime: 110
+  triggerEventAtSongTime: 115
   songEvent:
     m_PersistentCalls:
       m_Calls:
