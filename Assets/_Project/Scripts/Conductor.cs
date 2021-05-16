@@ -42,6 +42,8 @@ public class Conductor : MonoBehaviour
 		get; private set;
 	}
 
+	public float RawSongPosition => songPosition + firstBeatOffset;
+
 	private void Awake()
 	{
 		if (Instance == null)
