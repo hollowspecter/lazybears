@@ -59,4 +59,68 @@ public class SortBeatmapNotes
 		EditorUtility.SetDirty(beatmap.gameObject);
 	}
 
+	[MenuItem("CONTEXT/Note/Convert to Normal Note")]
+	static void ConvertToNormalNote(MenuCommand command)
+	{
+		Note note = (Note)command.context;
+		if (PrefabUtility.IsOutermostPrefabInstanceRoot(note.gameObject))
+			PrefabUtility.UnpackPrefabInstance(note.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+		note.isCultistNote = false;
+
+
+		// position
+		if (note.direction == Note.Direction.Left)
+		{
+			note.transform.localPosition = new Vector3(1.5f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Down)
+		{
+			note.transform.localPosition = new Vector3(3f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Up)
+		{
+			note.transform.localPosition = new Vector3(4.5f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Right)
+		{
+			note.transform.localPosition = new Vector3(6f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+
+		note.name = System.Enum.GetName(typeof(Note.Direction), note.direction);
+
+		note.GetComponent<SpriteRenderer>().color = Color.white;
+		EditorUtility.SetDirty(note);
+	}
+
+	[MenuItem("CONTEXT/Note/Convert to Cultist Note")]
+	static void ConvertToCultistNote(MenuCommand command)
+	{
+		Note note = (Note)command.context;
+		if (PrefabUtility.IsOutermostPrefabInstanceRoot(note.gameObject))
+			PrefabUtility.UnpackPrefabInstance(note.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+		note.isCultistNote = true;
+
+		// position
+		if (note.direction == Note.Direction.Left)
+		{
+			note.transform.localPosition = new Vector3(-6f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Down)
+		{
+			note.transform.localPosition = new Vector3(-4.5f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Up)
+		{
+			note.transform.localPosition = new Vector3(-3f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+		else if (note.direction == Note.Direction.Right)
+		{
+			note.transform.localPosition = new Vector3(-1.5f, note.transform.localPosition.y, note.transform.localPosition.z);
+		}
+
+		note.name = System.Enum.GetName(typeof(Note.Direction), note.direction) + " (Cultist)";
+
+		note.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+		EditorUtility.SetDirty(note);
+	}
 }
